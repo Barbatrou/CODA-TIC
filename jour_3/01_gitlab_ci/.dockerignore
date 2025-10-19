@@ -1,0 +1,18 @@
+# Gradle build artifacts
+**/build/
+
+# IDE files
+**/.idea/
+**/.vscode/
+**/*.iml
+**/*.ipr
+**/*.iws
+
+# Git
+**/.git/
+**/.gitignore
+
+# Docker
+**/.dockerignore
+**/Dockerfile
+**/docker-compose.yml
