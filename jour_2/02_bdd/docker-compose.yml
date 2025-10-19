@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  swagger-ui:
+    image: swaggerapi/swagger-ui:latest
+    container_name: cobaye-api-swagger
+    ports:
+      - "8081:8080"
+    environment:
+      - SWAGGER_JSON=/app/openapi-spec.json
+      - BASE_URL=/
+    volumes:
+      - ./openapi-spec.json:/app/openapi-spec.json:ro
+    networks:
+      - cobaye-network
+    restart: unless-stopped
+
+networks:
+  cobaye-network:
+    driver: bridge

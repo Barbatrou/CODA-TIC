@@ -1,0 +1,1592 @@
+{
+  "className": "coda.tic.cobaye_api.ProductControllerTest",
+  "name": "Product Controller",
+  "scenarios": [
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testAdjustPricesInvalidPercentage",
+      "description": "Test adjust prices invalid percentage",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "admin_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "admin_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 3983924,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products/category/book/price?percentage\u003d-100",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products/category/book/price?percentage\u003d-100"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "PATCH",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "PATCH"
+                  }
+                },
+                {
+                  "value": "method"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 3874452,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "400",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "400"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 221874,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 16997003
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 16997003
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testDeleteProductAsNonAdmin",
+      "description": "Test delete product as non admin",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "client_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "client_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 163242,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products/1",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products/1"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "DELETE",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "DELETE"
+                  }
+                },
+                {
+                  "value": "method"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 1439728,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "403",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "403"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 166767,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 2721323
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 2721323
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testGetProductsByCategory",
+      "description": "Test get products by category",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "client_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "client_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 163343,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products?category\u003dbook",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products?category\u003dbook"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "GET",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "GET"
+                  }
+                },
+                {
+                  "value": "method"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 4264174,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "200",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "200"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 189585,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the response body should be $",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the response body should be"
+                },
+                {
+                  "value": "[\n    {\"id\": 1, \"name\": \"Dune\", \"category\": \"book\", \"price\": 7.99, \"quantity\": 31},\n    {\"id\": 2, \"name\": \"The Witcher\", \"category\": \"book\", \"price\": 8.16, \"quantity\": 14},\n    {\"id\": 3, \"name\": \"Game of Throne: complete mega deluxe edition\", \"category\": \"book\", \"price\": 99.69, \"quantity\": 2}\n]\n",
+                  "argumentInfo": {
+                    "argumentName": "expectedJson",
+                    "formattedValue": "[\n    {\"id\": 1, \"name\": \"Dune\", \"category\": \"book\", \"price\": 7.99, \"quantity\": 31},\n    {\"id\": 2, \"name\": \"The Witcher\", \"category\": \"book\", \"price\": 8.16, \"quantity\": 14},\n    {\"id\": 3, \"name\": \"Game of Throne: complete mega deluxe edition\", \"category\": \"book\", \"price\": 99.69, \"quantity\": 2}\n]\n"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 245146,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 5987836
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 5987836
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testAdjustPricesAsNonAdmin",
+      "description": "Test adjust prices as non admin",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "client_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "client_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 158520,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products/category/book/price?percentage\u003d10",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products/category/book/price?percentage\u003d10"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "PATCH",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "PATCH"
+                  }
+                },
+                {
+                  "value": "method"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 1272672,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "403",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "403"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 138929,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 2518765
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 2518765
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testAdjustPricesCategoryNotFound",
+      "description": "Test adjust prices category not found",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "admin_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "admin_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 140246,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products/category/electronics/price?percentage\u003d10",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products/category/electronics/price?percentage\u003d10"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "PATCH",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "PATCH"
+                  }
+                },
+                {
+                  "value": "method"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 2404663,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "404",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "404"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 170387,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 3614270
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 3614270
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testGetProductByIdValid",
+      "description": "Test get product by id valid",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "client_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "client_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 126425,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products/1",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products/1"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "GET",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "GET"
+                  }
+                },
+                {
+                  "value": "method"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 3637851,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "200",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "200"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 160738,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the response body should be $",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the response body should be"
+                },
+                {
+                  "value": "{\n    \"id\": 1,\n    \"name\": \"Dune\",\n    \"category\": \"book\",\n    \"price\": 7.99,\n    \"quantity\": 31\n}\n",
+                  "argumentInfo": {
+                    "argumentName": "expectedJson",
+                    "formattedValue": "{\n    \"id\": 1,\n    \"name\": \"Dune\",\n    \"category\": \"book\",\n    \"price\": 7.99,\n    \"quantity\": 31\n}\n"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 136115,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 4894477
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 4894477
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testUpdateProductAsAdmin",
+      "description": "Test update product as admin",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "admin_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "admin_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 154198,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method with body $",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products/1",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products/1"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "PUT",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "PUT"
+                  }
+                },
+                {
+                  "value": "method with body"
+                },
+                {
+                  "value": "{\n    \"name\": \"Updated Product\",\n    \"price\": 199.99\n}\n",
+                  "argumentInfo": {
+                    "argumentName": "body",
+                    "formattedValue": "{\n    \"name\": \"Updated Product\",\n    \"price\": 199.99\n}\n"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 3208045,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "200",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "200"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 183825,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the response body should be $",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the response body should be"
+                },
+                {
+                  "value": "{\n    \"id\": 1,\n    \"name\": \"Updated Product\",\n    \"category\": \"book\",\n    \"price\": 199.99,\n    \"quantity\": 31\n}\n",
+                  "argumentInfo": {
+                    "argumentName": "expectedJson",
+                    "formattedValue": "{\n    \"id\": 1,\n    \"name\": \"Updated Product\",\n    \"category\": \"book\",\n    \"price\": 199.99,\n    \"quantity\": 31\n}\n"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 152127,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 4622290
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 4622290
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testCreateProductAsAdmin",
+      "description": "Test create product as admin",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "admin_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "admin_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 137979,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method with body $",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "POST",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "POST"
+                  }
+                },
+                {
+                  "value": "method with body"
+                },
+                {
+                  "value": "{\n    \"name\": \"New Product\",\n    \"category\": \"test\",\n    \"price\": 99.99,\n    \"quantity\": 10\n}\n",
+                  "argumentInfo": {
+                    "argumentName": "body",
+                    "formattedValue": "{\n    \"name\": \"New Product\",\n    \"category\": \"test\",\n    \"price\": 99.99,\n    \"quantity\": 10\n}\n"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 2911671,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "201",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "201"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 156723,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the response body should contain $",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the response body should contain"
+                },
+                {
+                  "value": "{\n    \"name\": \"New Product\",\n    \"category\": \"test\",\n    \"price\": 99.99,\n    \"quantity\": 10\n}\n",
+                  "argumentInfo": {
+                    "argumentName": "expectedJson",
+                    "formattedValue": "{\n    \"name\": \"New Product\",\n    \"category\": \"test\",\n    \"price\": 99.99,\n    \"quantity\": 10\n}\n"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 165757,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 4253645
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 4253645
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testDeleteProductAsAdmin",
+      "description": "Test delete product as admin",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "admin_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "admin_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 141560,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products/1",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products/1"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "DELETE",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "DELETE"
+                  }
+                },
+                {
+                  "value": "method"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 3033635,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "204",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "204"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 184130,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 4147717
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 4147717
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testCreateProductAsNonAdmin",
+      "description": "Test create product as non admin",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "client_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "client_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 148474,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method with body $",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "POST",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "POST"
+                  }
+                },
+                {
+                  "value": "method with body"
+                },
+                {
+                  "value": "{\n    \"name\": \"New Product\",\n    \"category\": \"test\",\n    \"price\": 99.99,\n    \"quantity\": 10\n}\n",
+                  "argumentInfo": {
+                    "argumentName": "body",
+                    "formattedValue": "{\n    \"name\": \"New Product\",\n    \"category\": \"test\",\n    \"price\": 99.99,\n    \"quantity\": 10\n}\n"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 1211057,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "403",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "403"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 131772,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 2288312
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 2288312
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testGetAllProducts",
+      "description": "Test get all products",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "client_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "client_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 139781,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "GET",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "GET"
+                  }
+                },
+                {
+                  "value": "method"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 2235893,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "200",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "200"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 143847,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the response body should be $",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the response body should be"
+                },
+                {
+                  "value": "[\n    {\"id\": 1, \"name\": \"Dune\", \"category\": \"book\", \"price\": 7.99, \"quantity\": 31},\n    {\"id\": 2, \"name\": \"The Witcher\", \"category\": \"book\", \"price\": 8.16, \"quantity\": 14},\n    {\"id\": 3, \"name\": \"Game of Throne: complete mega deluxe edition\", \"category\": \"book\", \"price\": 99.69, \"quantity\": 2},\n    {\"id\": 4, \"name\": \"Dacia Sandero\", \"category\": \"car\", \"price\": 14138, \"quantity\": 1},\n    {\"id\": 5, \"name\": \"Fiat Panda\", \"category\": \"car\", \"price\": 27040, \"quantity\": 1},\n    {\"id\": 6, \"name\": \"Pikachu\", \"category\": \"pokemon\", \"price\": 25.25, \"quantity\": 1},\n    {\"id\": 7, \"name\": \"Abo\", \"category\": \"pokemon\", \"price\": 3.14, \"quantity\": 146},\n    {\"id\": 8, \"name\": \"nosferapti\", \"category\": \"pokemon\", \"price\": 0.98, \"quantity\": 367}\n]\n",
+                  "argumentInfo": {
+                    "argumentName": "expectedJson",
+                    "formattedValue": "[\n    {\"id\": 1, \"name\": \"Dune\", \"category\": \"book\", \"price\": 7.99, \"quantity\": 31},\n    {\"id\": 2, \"name\": \"The Witcher\", \"category\": \"book\", \"price\": 8.16, \"quantity\": 14},\n    {\"id\": 3, \"name\": \"Game of Throne: complete mega deluxe edition\", \"category\": \"book\", \"price\": 99.69, \"quantity\": 2},\n    {\"id\": 4, \"name\": \"Dacia Sandero\", \"category\": \"car\", \"price\": 14138, \"quantity\": 1},\n    {\"id\": 5, \"name\": \"Fiat Panda\", \"category\": \"car\", \"price\": 27040, \"quantity\": 1},\n    {\"id\": 6, \"name\": \"Pikachu\", \"category\": \"pokemon\", \"price\": 25.25, \"quantity\": 1},\n    {\"id\": 7, \"name\": \"Abo\", \"category\": \"pokemon\", \"price\": 3.14, \"quantity\": 146},\n    {\"id\": 8, \"name\": \"nosferapti\", \"category\": \"pokemon\", \"price\": 0.98, \"quantity\": 367}\n]\n"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 342292,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 3715096
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 3715096
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testAdjustPricesAsAdmin",
+      "description": "Test adjust prices as admin",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "admin_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "admin_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 206828,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products/category/book/price?percentage\u003d10",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products/category/book/price?percentage\u003d10"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "PATCH",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "PATCH"
+                  }
+                },
+                {
+                  "value": "method"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 3999117,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "200",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "200"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 200154,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 5448532
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 5448532
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testGetProductByIdInvalid",
+      "description": "Test get product by id invalid",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "client_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "client_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 156677,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products/9999",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products/9999"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "GET",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "GET"
+                  }
+                },
+                {
+                  "value": "method"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 2029989,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "404",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "404"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 163887,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 3128919
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 3128919
+    },
+    {
+      "className": "coda.tic.cobaye_api.ProductControllerTest",
+      "testMethodName": "testUpdateProductAsNonAdmin",
+      "description": "Test update product as non admin",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "given I am authenticated as $",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "given I am authenticated as"
+                },
+                {
+                  "value": "client_1",
+                  "argumentInfo": {
+                    "argumentName": "user",
+                    "formattedValue": "client_1"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 143440,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "when calling $ endpoint with $ method with body $",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "when calling"
+                },
+                {
+                  "value": "/api/products/1",
+                  "argumentInfo": {
+                    "argumentName": "endpoint",
+                    "formattedValue": "/api/products/1"
+                  }
+                },
+                {
+                  "value": "endpoint with"
+                },
+                {
+                  "value": "PUT",
+                  "argumentInfo": {
+                    "argumentName": "method",
+                    "formattedValue": "PUT"
+                  }
+                },
+                {
+                  "value": "method with body"
+                },
+                {
+                  "value": "{\n    \"name\": \"Updated Product\"\n}\n",
+                  "argumentInfo": {
+                    "argumentName": "body",
+                    "formattedValue": "{\n    \"name\": \"Updated Product\"\n}\n"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 1152153,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "then the status should be $",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "then the status should be"
+                },
+                {
+                  "value": "403",
+                  "argumentInfo": {
+                    "argumentName": "expectedStatus",
+                    "formattedValue": "403"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 120679,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 2222284
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 2222284
+    }
+  ],
+  "tagMap": {}
+}

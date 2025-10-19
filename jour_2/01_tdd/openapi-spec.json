@@ -1,0 +1,472 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Cobaye API",
+    "description": "API for managing products, orders, and users with authentication",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api",
+      "description": "Local development server"
+    }
+  ],
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "paths": {
+    "/orders": {
+      "post": {
+        "summary": "Create a new order",
+        "description": "Creates a new order after validating product availability and quantities, automatically calculates the total price, and deducts quantities from product inventory.",
+        "operationId": "createOrder",
+        "tags": ["Orders"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderRequest"
+              },
+              "examples": {
+                "basicOrder": {
+                  "summary": "Basic order example",
+                  "value": {
+                    "user_id": 3,
+                    "products": [
+                      {
+                        "productId": 1,
+                        "quantity": 2
+                      },
+                      {
+                        "productId": 7,
+                        "quantity": 5
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Order created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                },
+                "examples": {
+                  "createdOrder": {
+                    "summary": "Successfully created order",
+                    "value": {
+                      "id": 3,
+                      "user_id": 3,
+                      "products": [
+                        {
+                          "productId": 1,
+                          "quantity": 2
+                        },
+                        {
+                          "productId": 7,
+                          "quantity": 5
+                        }
+                      ],
+                      "total": 31.68
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid input or insufficient stock",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "insufficientStock": {
+                    "summary": "Insufficient stock",
+                    "value": {
+                      "error": "Insufficient stock",
+                      "productId": 3,
+                      "requested": 10,
+                      "available": 2
+                    }
+                  },
+                  "invalidQuantity": {
+                    "summary": "Invalid quantity",
+                    "value": {
+                      "error": "Invalid request",
+                      "message": "Quantity must be greater than 0"
+                    }
+                  },
+                  "emptyProducts": {
+                    "summary": "Empty products list",
+                    "value": {
+                      "error": "Invalid request",
+                      "message": "Products list cannot be empty"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "productNotFound": {
+                    "summary": "Product not found",
+                    "value": {
+                      "error": "Product not found",
+                      "productId": 999
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/category/{category}/price": {
+      "patch": {
+        "summary": "Adjust prices for a category",
+        "description": "Updates prices for all products in a specific category by a given percentage. Supports both price increases (positive percentage) and decreases (negative percentage).",
+        "operationId": "adjustCategoryPrices",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "path",
+            "required": true,
+            "description": "Category name (e.g., 'book', 'car', 'pokemon')",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "book": {
+                "summary": "Book category",
+                "value": "book"
+              },
+              "car": {
+                "summary": "Car category",
+                "value": "car"
+              },
+              "pokemon": {
+                "summary": "Pokemon category",
+                "value": "pokemon"
+              }
+            }
+          },
+          {
+            "name": "percentage",
+            "in": "query",
+            "required": true,
+            "description": "Percentage to adjust prices. Positive for increase, negative for decrease (e.g., 10 for +10%, -15 for -15%)",
+            "schema": {
+              "type": "number",
+              "format": "double",
+              "minimum": -100,
+              "exclusiveMinimum": true
+            },
+            "examples": {
+              "increase": {
+                "summary": "Increase by 10%",
+                "value": 10
+              },
+              "decrease": {
+                "summary": "Decrease by 15%",
+                "value": -15
+              },
+              "fractional": {
+                "summary": "Increase by 25.5%",
+                "value": 25.5
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Prices updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceAdjustmentResponse"
+                },
+                "examples": {
+                  "successfulUpdate": {
+                    "summary": "Successful price update",
+                    "value": {
+                      "category": "book",
+                      "percentage": 10,
+                      "productsUpdated": 3,
+                      "products": [
+                        {
+                          "id": 1,
+                          "name": "Dune",
+                          "category": "book",
+                          "price": 8.79,
+                          "quantity": 31
+                        },
+                        {
+                          "id": 2,
+                          "name": "The Witcher",
+                          "category": "book",
+                          "price": 8.98,
+                          "quantity": 14
+                        },
+                        {
+                          "id": 3,
+                          "name": "Game of Throne: complete mega deluxe edition",
+                          "category": "book",
+                          "price": 109.66,
+                          "quantity": 2
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid percentage",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "negativePrices": {
+                    "summary": "Percentage results in negative prices",
+                    "value": {
+                      "error": "Invalid percentage",
+                      "message": "Percentage cannot result in negative prices"
+                    }
+                  },
+                  "missingPercentage": {
+                    "summary": "Missing percentage parameter",
+                    "value": {
+                      "error": "Invalid percentage",
+                      "message": "Percentage parameter is required"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Category not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "categoryNotFound": {
+                    "summary": "Category not found",
+                    "value": {
+                      "error": "Category not found",
+                      "category": "electronics"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "HTTP Basic Authentication. Available users: admin_1, admin_2, client_1, client_2"
+      }
+    },
+    "schemas": {
+      "CreateOrderRequest": {
+        "type": "object",
+        "required": ["user_id", "products"],
+        "properties": {
+          "user_id": {
+            "type": "integer",
+            "description": "ID of the user placing the order",
+            "example": 3
+          },
+          "products": {
+            "type": "array",
+            "description": "List of products to order",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique order identifier",
+            "example": 1
+          },
+          "user_id": {
+            "type": "integer",
+            "description": "ID of the user who placed the order",
+            "example": 3
+          },
+          "products": {
+            "type": "array",
+            "description": "List of ordered products",
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
+          "total": {
+            "type": "number",
+            "format": "double",
+            "description": "Total price of the order (calculated automatically)",
+            "example": 31.68
+          }
+        }
+      },
+      "OrderItem": {
+        "type": "object",
+        "required": ["productId", "quantity"],
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "description": "ID of the product",
+            "example": 1
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Quantity to order (must be greater than 0)",
+            "minimum": 1,
+            "example": 2
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique product identifier",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Product name",
+            "example": "Dune"
+          },
+          "category": {
+            "type": "string",
+            "description": "Product category",
+            "example": "book"
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "description": "Product price (rounded to 2 decimal places)",
+            "example": 7.99
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Available stock quantity",
+            "example": 31
+          }
+        }
+      },
+      "PriceAdjustmentResponse": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "Category that was updated",
+            "example": "book"
+          },
+          "percentage": {
+            "type": "number",
+            "format": "double",
+            "description": "Percentage applied to prices",
+            "example": 10
+          },
+          "productsUpdated": {
+            "type": "integer",
+            "description": "Number of products updated",
+            "example": 3
+          },
+          "products": {
+            "type": "array",
+            "description": "List of updated products",
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error type or category",
+            "example": "Product not found"
+          },
+          "message": {
+            "type": "string",
+            "description": "Detailed error message",
+            "example": "The requested product does not exist"
+          },
+          "productId": {
+            "type": "integer",
+            "description": "Product ID related to the error (if applicable)",
+            "example": 999
+          },
+          "category": {
+            "type": "string",
+            "description": "Category related to the error (if applicable)",
+            "example": "electronics"
+          },
+          "requested": {
+            "type": "integer",
+            "description": "Requested quantity (for insufficient stock errors)",
+            "example": 10
+          },
+          "available": {
+            "type": "integer",
+            "description": "Available quantity (for insufficient stock errors)",
+            "example": 2
+          }
+        },
+        "required": ["error"]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Orders",
+      "description": "Order management operations"
+    },
+    {
+      "name": "Products",
+      "description": "Product management operations"
+    }
+  ]
+}

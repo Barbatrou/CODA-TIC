@@ -1,0 +1,22 @@
+{
+    "users": [
+        {"id": 1, "name": "admin_1", "permissions": ["admin"]},
+        {"id": 2, "name": "admin_2", "permissions": ["admin", "client"]},
+        {"id": 3, "name": "client_1", "permissions": ["client"]},
+        {"id": 4, "name": "client_2", "permissions": ["client"]}
+    ],
+    "products": [
+        {"id": 1, "name": "Dune", "category": "book", "price": 7.99, "quantity": 31},
+        {"id": 2, "name": "The Witcher", "category": "book", "price": 8.16, "quantity": 14},
+        {"id": 3, "name": "Game of Throne: complete mega deluxe edition", "category": "book", "price": 99.69, "quantity": 2},
+        {"id": 4, "name": "Dacia Sandero", "category": "car", "price": 14138, "quantity": 1},
+        {"id": 5, "name": "Fiat Panda", "category": "car", "price": 27040, "quantity": 1},
+        {"id": 6, "name": "Pikachu", "category": "pokemon", "price": 25.25, "quantity": 1},
+        {"id": 7, "name": "Abo", "category": "pokemon", "price": 3.14, "quantity": 146},
+        {"id": 8, "name": "nosferapti", "category": "pokemon", "price": 0.98, "quantity": 367}
+    ],
+    "orders": [
+        {"id": 1, "user_id": 3, "products": [{"productId": 1, "quantity": 1}, {"productId": 4, "quantity": 1}, {"productId": 7, "quantity": 2}], "total": 14152.27},
+        {"id": 2, "user_id": 4, "products": [{"productId": 1, "quantity": 1}, {"productId": 4, "quantity": 1}, {"productId": 7, "quantity": 2}], "total": 14152.27}
+    ]
+}
