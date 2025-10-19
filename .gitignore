@@ -1,0 +1,17 @@
+.idea
+*~
+
+**/build
+**/gitlab*
+
+**/__pycache__
+**/*.py[cod]
+.mypy_cache
+.pytest_cache
+.venv
+.env*
+.staging.private.key
+scripts/serve-prod.sh
+docker-compose.override.yml
+trash/
+tmp/
