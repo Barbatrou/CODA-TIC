@@ -3,7 +3,7 @@
 ## Build and launch
 
 ### build image
-`make image` or `docker build -t coda/tic/cobaye-test:latest --target testing`
+`make image` or `docker build -t coda/tic/cobaye-test:latest --target testing .`
 
 ### test project
 ```
