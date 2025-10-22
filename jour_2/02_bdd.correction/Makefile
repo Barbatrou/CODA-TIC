@@ -17,13 +17,6 @@ image:
 	--target $(TARGET)							\
 	-t $(IMAGE):$(TAG) .
 
-## for Ci test purposes should only be used with TARGET=ci
-test: image
-	@docker run									\
-	--name $(NAME)-tests						\
-	--rm										\
-	$(IMAGE):$(TAG)
-
 serve:	image
 	@docker run 								\
 	--name $(NAME)	 							\
@@ -43,6 +36,7 @@ debug:	image
 	-d											\
 	--entrypoint "tail" $(IMAGE):$(TAG) -f /dev/null
 
+
 shell:
 	@docker exec -it $(NAME) /bin/bash
 
@@ -59,4 +53,4 @@ help:
 	/^[a-zA-Z0-9_-]+:/ { printf ("\033[32m" "%-25s" "\033[0m-- " help "\n", $$1 ) }	\
 	/.*/ { help = "" }'
 
-.PHONY:	image serve debug shell test
+.PHONY:	image serve shell

@@ -18,12 +18,5 @@ ENTRYPOINT ["/opt/build_and_run.sh"]
 
 FROM base AS production
 COPY ./cobaye_api /app/
-USER root
-RUN chown -R spring:spring /app
-USER spring
 RUN ./gradlew clean build
-ENTRYPOINT ["java", "-jar", "/app/build/libs/cobaye_api.jar"]
-
-FROM production AS ci
-COPY ./data.json /var/data.json
-ENTRYPOINT ["/app/gradlew", "test"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]
